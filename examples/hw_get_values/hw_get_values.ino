@@ -1,13 +1,15 @@
 #include <MHZ19.h>
 
-MHZ19 mhz(&Serial1);
+HardwareSerial Serial2(2);
+
+MHZ19 mhz(&Serial2);
 
 void setup()
 {
   Serial.begin(115200);
   Serial.println(F("Starting..."));
 
-  Serial1.begin(9600);
+  Serial2.begin(9600);
 }
 
 void loop()

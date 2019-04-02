@@ -1,6 +1,5 @@
 #pragma once
 #include <Arduino.h>
-#include <SoftwareSerial.h>
 
 enum MHZ19_RESULT {
 	MHZ19_RESULT_OK,
@@ -21,7 +20,6 @@ class MHZ19
 {
 public:
 	MHZ19(HardwareSerial * serial);
-	MHZ19(SoftwareSerial * serial);
 	~MHZ19();
 	// Call retrieveData to retrieve values from the sensor and check return code
 	MHZ19_RESULT retrieveData();
@@ -40,7 +38,6 @@ public:
 	MHZ19_RESULT receiveResponse(byte (*cmd)[9]);	
 private:
 	HardwareSerial * _hs = nullptr;
-	SoftwareSerial * _ss = nullptr;
 	byte _response[9];
 	MHZ19_RESULT _result;
 

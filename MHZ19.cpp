@@ -5,15 +5,9 @@ MHZ19::MHZ19(HardwareSerial * serial)
 	_hs = serial;
 }
 
-MHZ19::MHZ19(SoftwareSerial * serial)
-{
-	_ss = serial;
-}
-
 MHZ19::~MHZ19()
 {
 	_hs = nullptr;
-	_ss = nullptr;
 }
 
 int MHZ19::getCO2()
@@ -79,8 +73,6 @@ MHZ19_RESULT MHZ19::setRange(MHZ19_RANGE range)
 		  case MHZ19_RANGE_10000:
 			sendCommand(0x99, 0x00, 0x00, 0x00, 0x27, 0x10);
  			break;
-		  default:
-			return;
 	}
 
 	_result = receiveResponse(&_response);
@@ -126,10 +118,6 @@ MHZ19_RESULT MHZ19::receiveResponse(byte (*cmd)[9]) {
 	{
 		_hs->readBytes(*cmd, 9);
 	}
-	else
-	{
-		_ss->readBytes(*cmd, 9);
-	}
 
 	byte crc = calcCRC(*cmd);
 
@@ -158,10 +146,6 @@ MHZ19_RESULT MHZ19::retrieveData()
 	{
 		_hs->readBytes(_response, 9);
 	}
-	else
-	{
-		_ss->readBytes(_response, 9);
-	}
 
 	byte crc = calcCRC(_response);
 
@@ -183,11 +167,7 @@ void MHZ19::write(byte *data, byte len)
 		while (_hs->available()) { _hs->read(); }
 		_hs->write(data, len);
 	}
-	else
-	{
-		while (_ss->available()) { _ss->read(); }
-		_ss->write(data, len);
-	}
+
 }
 
 int MHZ19::bytes2int(byte h, byte l)
