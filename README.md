@@ -1,8 +1,9 @@
-# Mangled fork of MHZ19 library to compile (sort of) for ESP32
-Arduino library for MH-Z19/MH-Z19B CO2 sensors.
+# This janky hack made obsolete by [1.1.0 update to original repo](https://github.com/strange-v/MHZ19#110)
+## ~~Mangled fork of MHZ19 library to compile (sort of) for ESP32~~
+~~Arduino library for MH-Z19/MH-Z19B CO2 sensors.~~
 
-## MHZ19
-This library uses ~~software or~~ ESP32 hardware serial to communicate with sensor. Using MHZ19 you can get CO2, temperature and accuracy values (see examples). Only use **hw_get_values.ino** for ESP32. (References to software serial were removed, this is a hack you probably shouldn't use this)
+## ~~MHZ19~~
+~~This library uses software or ESP32 hardware serial to communicate with sensor. Using MHZ19 you can get CO2, temperature and accuracy values (see examples). Only use **hw_get_values.ino** for ESP32. (References to software serial were removed, this is a hack you probably shouldn't use this)~~
 
 ## ~~MHZ19PWM~~
 ~~With this library, you can get CO2 level using a single pin which supports interrupt. MHZ19PWM supports three modes:~~
